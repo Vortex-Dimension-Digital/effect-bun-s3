@@ -1,6 +1,6 @@
 {
 	"name": "@vortexdd/effect-bun-s3",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Effect v4 service for Bun's native S3 client: typed errors, streaming uploads and downloads, presigned URLs, and a KeyValueStore layer.",
 	"keywords": [
 		"effect",
