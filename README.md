@@ -177,6 +177,7 @@ Each operation runs in a span named after it (`S3.write`, `S3.stream`, ...) with
 ## Development
 
 ```sh
+mise install           # Bun, pinned in mise.toml
 bun install
 docker compose up -d   # a local S3 server (RustFS) with the test bucket
 bun run validate       # lint, types, unused code, package checks, tests

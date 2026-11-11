@@ -1,3 +1,7 @@
+[run]
+# Tools whose bin says `#!/usr/bin/env node` run on Bun: no Node needed.
+bun = true
+
 [fmt]
 printWidth = 100
 useTabs = true

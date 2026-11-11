@@ -53,7 +53,7 @@
 		"lint:fix": "oxlint --fix && bun fmt",
 		"knip": "knip",
 		"test": "bun test",
-		"validate:package": "bun run build && publint --strict && attw --pack . --profile esm-only",
+		"validate:package": "bun run build && publint --strict && bun pm pack --destination .pack --quiet && attw .pack/*.tgz --profile esm-only && rm -rf .pack",
 		"validate": "bun run lint && bun run check && bun run knip && bun run validate:package && bun run test",
 		"changeset": "changeset",
 		"prepack": "bun run build"
@@ -85,7 +85,6 @@
 	},
 	"packageManager": "bun@1.4.4",
 	"publishConfig": {
-		"access": "public",
-		"provenance": true
+		"access": "public"
 	}
 }
