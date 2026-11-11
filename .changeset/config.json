@@ -1,0 +1,10 @@
+{
+	"$schema": "https://unpkg.com/@changesets/config@3/schema.json",
+	"changelog": [
+		"@changesets/changelog-github",
+		{ "repo": "Vortex-Dimension-Digital/effect-bun-s3" }
+	],
+	"commit": false,
+	"access": "public",
+	"baseBranch": "main"
+}

@@ -1,0 +1,23 @@
+# A local S3-compatible server for the integration tests: `docker compose up -d`.
+services:
+  s3:
+    image: rustfs/rustfs:1.0.5
+    environment:
+      RUSTFS_ACCESS_KEY: effect-bun-s3
+      RUSTFS_SECRET_KEY: effect-bun-s3-secret
+    ports:
+      - "9100:9000"
+
+  # Bun's S3 client cannot create buckets: create the test bucket once.
+  create-bucket:
+    image: amazon/aws-cli:2.40.0
+    depends_on:
+      - s3
+    environment:
+      AWS_ACCESS_KEY_ID: effect-bun-s3
+      AWS_SECRET_ACCESS_KEY: effect-bun-s3-secret
+      AWS_DEFAULT_REGION: us-east-1
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - until aws --endpoint-url http://s3:9000 s3 ls >/dev/null 2>&1; do sleep 1; done;
+        aws --endpoint-url http://s3:9000 s3 mb s3://effect-bun-s3-test || true

@@ -1,0 +1,91 @@
+{
+	"name": "effect-bun-s3",
+	"version": "0.0.0",
+	"description": "Effect v4 service for Bun's native S3 client: typed errors, streaming uploads and downloads, presigned URLs, and a KeyValueStore layer.",
+	"keywords": [
+		"effect",
+		"effect-ts",
+		"bun",
+		"s3",
+		"object-storage",
+		"r2",
+		"minio",
+		"rustfs",
+		"key-value-store"
+	],
+	"homepage": "https://github.com/Vortex-Dimension-Digital/effect-bun-s3#readme",
+	"bugs": "https://github.com/Vortex-Dimension-Digital/effect-bun-s3/issues",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Vortex-Dimension-Digital/effect-bun-s3.git"
+	},
+	"license": "MIT",
+	"author": "Vortex Dimension Digital",
+	"type": "module",
+	"sideEffects": false,
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./dist/index.js"
+		},
+		"./S3": {
+			"types": "./dist/S3.d.ts",
+			"default": "./dist/S3.js"
+		},
+		"./S3Error": {
+			"types": "./dist/S3Error.d.ts",
+			"default": "./dist/S3Error.js"
+		},
+		"./S3KeyValueStore": {
+			"types": "./dist/S3KeyValueStore.d.ts",
+			"default": "./dist/S3KeyValueStore.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"dist",
+		"src"
+	],
+	"scripts": {
+		"build": "rm -rf dist && tsc -p tsconfig.build.json",
+		"check": "effect-tsgo tsc -p tsconfig.json",
+		"lint": "oxlint && bun fmt --check",
+		"lint:fix": "oxlint --fix && bun fmt",
+		"knip": "knip",
+		"test": "bun test",
+		"validate:package": "bun run build && publint --strict && attw --pack . --profile esm-only",
+		"validate": "bun run lint && bun run check && bun run knip && bun run validate:package && bun run test",
+		"changeset": "changeset",
+		"prepack": "bun run build"
+	},
+	"devDependencies": {
+		"@arethetypeswrong/cli": "0.18.5",
+		"@changesets/changelog-github": "1.0.1",
+		"@changesets/cli": "3.0.3",
+		"@effect/tsgo": "0.67.7",
+		"@types/bun": "1.4.4",
+		"effect": "4.1.4",
+		"knip": "6.45.1",
+		"oxlint": "1.93.0",
+		"oxlint-tsgolint": "7.0.2006",
+		"publint": "0.3.25",
+		"typescript": "7.0.2"
+	},
+	"peerDependencies": {
+		"@types/bun": ">=1.4.4",
+		"effect": "^4.1.0"
+	},
+	"peerDependenciesMeta": {
+		"@types/bun": {
+			"optional": true
+		}
+	},
+	"engines": {
+		"bun": ">=1.4.4"
+	},
+	"packageManager": "bun@1.4.4",
+	"publishConfig": {
+		"access": "public",
+		"provenance": true
+	}
+}

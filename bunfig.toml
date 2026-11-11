@@ -1,0 +1,9 @@
+[fmt]
+printWidth = 100
+useTabs = true
+sortImports = true
+ignorePatterns = ["CHANGELOG.md"]
+
+[test]
+# Integration tests talk to a real S3 server: give slow CI runners room.
+timeout = 30000
