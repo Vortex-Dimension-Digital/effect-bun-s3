@@ -10,7 +10,7 @@
 import * as Data from "effect/Data";
 import * as Predicate from "effect/Predicate";
 
-const TypeId = "~effect-bun-s3/S3Error" as const;
+const TypeId = "~@vortexdd/effect-bun-s3/S3Error" as const;
 
 /**
  * The service operation that failed.

@@ -153,7 +153,7 @@ export interface Service {
  * @since 0.1.0
  * @category services
  */
-export class S3 extends Context.Service<S3, Service>()("effect-bun-s3/S3") {}
+export class S3 extends Context.Service<S3, Service>()("@vortexdd/effect-bun-s3/S3") {}
 
 /**
  * Client options: Bun's `S3Options`, with the secrets also accepted as

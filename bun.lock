@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "effect-bun-s3",
+      "name": "@vortexdd/effect-bun-s3",
       "devDependencies": {
         "@arethetypeswrong/cli": "0.18.5",
         "@changesets/changelog-github": "1.0.1",

@@ -5,7 +5,7 @@
  * Like Effect's file-system store, `get` reads an entry as UTF-8 text; read
  * entries stored as bytes with `getUint8Array`. Effect marks `KeyValueStore`
  * as unstable, so this module lives on its own entry point
- * (`effect-bun-s3/S3KeyValueStore`).
+ * (`@vortexdd/effect-bun-s3/S3KeyValueStore`).
  *
  * @since 0.1.0
  */

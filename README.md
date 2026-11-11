@@ -1,4 +1,4 @@
-# effect-bun-s3
+# @vortexdd/effect-bun-s3
 
 [Effect](https://effect.website) v4 service for [Bun's native S3 client](https://bun.com/docs/runtime/s3).
 
@@ -13,7 +13,7 @@ It works with any S3-compatible store: AWS S3, Cloudflare R2, MinIO, RustFS, Gar
 ## Install
 
 ```sh
-bun add effect-bun-s3 effect
+bun add @vortexdd/effect-bun-s3 effect
 ```
 
 Requires Bun 1.4.4 or newer and Effect 4.1 or newer.
@@ -21,8 +21,8 @@ Requires Bun 1.4.4 or newer and Effect 4.1 or newer.
 ## Usage
 
 ```ts
+import { S3 } from "@vortexdd/effect-bun-s3";
 import { Effect, Stream } from "effect";
-import { S3 } from "effect-bun-s3";
 
 const program = Effect.gen(function* () {
 	const s3 = yield* S3.S3;
@@ -60,8 +60,8 @@ program.pipe(
 To read the options through Effect's `Config` instead:
 
 ```ts
+import { S3 } from "@vortexdd/effect-bun-s3";
 import { Config } from "effect";
-import { S3 } from "effect-bun-s3";
 
 const S3Live = S3.layerConfig({
 	endpoint: Config.String("STORAGE_ENDPOINT"),
@@ -148,12 +148,12 @@ Interrupting `bytes`, `text` or a `stream` download cancels the request, and int
 
 ### KeyValueStore
 
-`effect-bun-s3/S3KeyValueStore` provides Effect's `KeyValueStore` on top of the `S3` service, one object per entry:
+`@vortexdd/effect-bun-s3/S3KeyValueStore` provides Effect's `KeyValueStore` on top of the `S3` service, one object per entry:
 
 ```ts
+import { S3 } from "@vortexdd/effect-bun-s3";
+import * as S3KeyValueStore from "@vortexdd/effect-bun-s3/S3KeyValueStore";
 import { Effect, Layer } from "effect";
-import { S3 } from "effect-bun-s3";
-import * as S3KeyValueStore from "effect-bun-s3/S3KeyValueStore";
 import { KeyValueStore } from "effect/persistence";
 
 const StoreLive = S3KeyValueStore.layer({ prefix: "cache/" }).pipe(Layer.provide(S3.layer()));
