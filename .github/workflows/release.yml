@@ -75,7 +75,8 @@ jobs:
   publish:
     needs: pack
     runs-on: ubuntu-latest
-    # npm's trusted publisher for this package is bound to this environment.
+    # npm trusted publishing (no token): the package trusts this workflow
+    # file in this environment.
     environment: npm
     permissions:
       contents: write
@@ -91,7 +92,6 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
-          registry-url: https://registry.npmjs.org
       # Trusted publishing needs npm 11.5.1 or newer.
       - run: npm install --global npm@12.2.2
       - run: bun install --frozen-lockfile
@@ -99,7 +99,3 @@ jobs:
         with:
           pack-dir-artifact-id: ${{ needs.pack.outputs.pack-dir-artifact-id }}
           create-github-releases: true
-        env:
-          # Only for the very first publish, before the package exists on npm
-          # and trusted publishing can be configured. Remove afterwards.
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
