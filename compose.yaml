@@ -1,7 +1,7 @@
 # A local S3-compatible server for the integration tests: `docker compose up -d`.
 services:
   s3:
-    image: rustfs/rustfs:1.0.5
+    image: rustfs/rustfs:1.0.6
     environment:
       RUSTFS_ACCESS_KEY: effect-bun-s3
       RUSTFS_SECRET_KEY: effect-bun-s3-secret
